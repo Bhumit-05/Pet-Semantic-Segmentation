@@ -1,0 +1,37 @@
+{
+    "variant": "baseline_unet",
+    "use_dilated_bottleneck": false,
+    "trainable_parameters": 467235,
+    "latency_ms_batch1_fp32": 3.6891,
+    "device": "cpu",
+    "test_results": {
+        "per_class_iou": {
+            "foreground_0": 60.99,
+            "background_1": 76.56,
+            "border_2": 21.41
+        },
+        "mIoU": 52.99
+    },
+    "training_log": [
+        {
+            "epoch": 1,
+            "train_loss": 0.8462,
+            "val_mIoU": 48.61,
+            "val_per_class_iou": {
+                "foreground_0": 56.13,
+                "background_1": 73.28,
+                "border_2": 16.43
+            }
+        },
+        {
+            "epoch": 2,
+            "train_loss": 0.585,
+            "val_mIoU": 53.02,
+            "val_per_class_iou": {
+                "foreground_0": 60.87,
+                "background_1": 77.44,
+                "border_2": 20.74
+            }
+        }
+    ]
+}

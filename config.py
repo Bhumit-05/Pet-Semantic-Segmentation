@@ -1,0 +1,19 @@
+from pathlib import Path
+
+SEED = 42
+IMG_SIZE = 64
+BATCH_SIZE = 64
+NUM_WORKERS = 4
+EPOCHS = 2
+PATIENCE = 5
+LEARNING_RATE = 1e-3
+WEIGHT_DECAY = 1e-4
+NUM_CLASSES = 3
+IGNORE_INDEX = 255
+VAL_SPLIT = 0.15
+
+DATA_DIR = Path("./data")
+OUTPUT_DIR = Path("./segmentation_experiment_artifacts")
+
+IMAGENET_MEAN = [0.485, 0.456, 0.406]
+IMAGENET_STD = [0.229, 0.224, 0.225]
