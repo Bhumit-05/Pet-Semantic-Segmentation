@@ -1,0 +1,97 @@
+{
+    "variant": "controlled_dilated_unet",
+    "use_dilated_bottleneck": true,
+    "trainable_parameters": 467235,
+    "latency_ms_batch1_fp32": 4.1108,
+    "device": "cpu",
+    "test_results": {
+        "per_class_iou": {
+            "foreground_0": 71.3,
+            "background_1": 83.67,
+            "border_2": 37.78
+        },
+        "mIoU": 64.25
+    },
+    "training_log": [
+        {
+            "epoch": 1,
+            "train_loss": 0.791,
+            "val_mIoU": 44.72,
+            "val_per_class_iou": {
+                "foreground_0": 53.3,
+                "background_1": 68.02,
+                "border_2": 12.84
+            }
+        },
+        {
+            "epoch": 2,
+            "train_loss": 0.5491,
+            "val_mIoU": 55.75,
+            "val_per_class_iou": {
+                "foreground_0": 64.23,
+                "background_1": 79.26,
+                "border_2": 23.76
+            }
+        },
+        {
+            "epoch": 3,
+            "train_loss": 0.4915,
+            "val_mIoU": 57.96,
+            "val_per_class_iou": {
+                "foreground_0": 67.47,
+                "background_1": 81.79,
+                "border_2": 24.62
+            }
+        },
+        {
+            "epoch": 4,
+            "train_loss": 0.4284,
+            "val_mIoU": 60.63,
+            "val_per_class_iou": {
+                "foreground_0": 67.08,
+                "background_1": 82.3,
+                "border_2": 32.49
+            }
+        },
+        {
+            "epoch": 5,
+            "train_loss": 0.3978,
+            "val_mIoU": 60.45,
+            "val_per_class_iou": {
+                "foreground_0": 68.64,
+                "background_1": 82.48,
+                "border_2": 30.25
+            }
+        },
+        {
+            "epoch": 6,
+            "train_loss": 0.3828,
+            "val_mIoU": 63.8,
+            "val_per_class_iou": {
+                "foreground_0": 70.41,
+                "background_1": 83.58,
+                "border_2": 37.42
+            }
+        },
+        {
+            "epoch": 7,
+            "train_loss": 0.3663,
+            "val_mIoU": 64.71,
+            "val_per_class_iou": {
+                "foreground_0": 72.75,
+                "background_1": 84.81,
+                "border_2": 36.55
+            }
+        },
+        {
+            "epoch": 8,
+            "train_loss": 0.3514,
+            "val_mIoU": 64.59,
+            "val_per_class_iou": {
+                "foreground_0": 72.28,
+                "background_1": 84.66,
+                "border_2": 36.84
+            }
+        }
+    ]
+}

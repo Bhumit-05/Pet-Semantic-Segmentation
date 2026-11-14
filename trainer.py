@@ -40,12 +40,25 @@ def run_variant(
     optimizer = torch.optim.AdamW(model.parameters(), lr=LEARNING_RATE, weight_decay=WEIGHT_DECAY)
     criterion = nn.CrossEntropyLoss(ignore_index=IGNORE_INDEX)
 
+    best_ckpt = output_dir / f"{name}_best.pt"
+    report_path = output_dir / f"{name}_report.json"
+
     best_val_miou = -1.0
     epochs_no_improve = 0
-    best_ckpt = output_dir / f"{name}_best.pt"
     training_log = []
+    start_epoch = 1
 
-    for epoch in range(1, epochs + 1):
+    if best_ckpt.exists() and report_path.exists():
+        model.load_state_dict(torch.load(best_ckpt, map_location=device))
+        with open(report_path, "r") as f:
+            prev_data = json.load(f)
+        training_log = prev_data.get("training_log", [])
+        if training_log:
+            best_val_miou = max(entry["val_mIoU"] for entry in training_log)
+            start_epoch = training_log[-1]["epoch"] + 1
+            print(f"Resuming {name} from epoch {start_epoch} to {epochs} (Best Val mIoU so far: {best_val_miou:.2f}%)")
+
+    for epoch in range(start_epoch, epochs + 1):
         model.train()
         running_loss = 0.0
         for images, targets in train_loader:
@@ -93,7 +106,7 @@ def run_variant(
         "test_results": test_metrics,
         "training_log": training_log,
     }
-    with open(output_dir / f"{name}_report.json", "w") as f:
+    with open(report_path, "w") as f:
         json.dump(summary, f, indent=4)
 
     print(f"Result | {name} | Params: {param_count:,} | Latency: {latency_ms} ms | Test mIoU: {test_metrics['mIoU']}%")
